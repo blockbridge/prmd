@@ -136,16 +136,19 @@ module Prmd
     end
 
     # @param [Hash, String] schema
-    def schema_example(schema)
+    def schema_example(schema, minimal: false)
       _, dff_schema = dereference(schema)
 
       if dff_schema.key?('example')
         dff_schema['example']
       elsif dff_schema.key?('properties')
+        req = dff_schema['required'] || []
         example = {}
         dff_schema['properties'].each do |key, value|
           _, value = dereference(value)
-          example[key] = schema_value_example(value)
+          if req.include?(key) || value['example'] || !minimal
+            example[key] = schema_value_example(value)
+          end
         end
         example
       elsif dff_schema.key?('items')

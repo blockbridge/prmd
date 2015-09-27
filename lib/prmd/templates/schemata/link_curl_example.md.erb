@@ -5,7 +5,7 @@
     get_params = []
 
     if link.has_key?('schema')
-      data = schema.schema_example(link['schema'])
+      data = schema.schema_example(link['schema'], minimal: true)
 
       if link['method'].upcase == 'GET' && !data.nil?
         get_params << Prmd::UrlGenerator.new({schema: schema, link: link, options: options}).url_params
