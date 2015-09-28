@@ -21,8 +21,8 @@ $ curl <%= href %><%- unless headers.empty? %> \<%- end %>
   <%- headers.each do |value| %>
   -H "<%= value %>"<%- if (!params.empty? || value != headers.last) %> \<%- end %>
   <%- end %>
-<%- if !body.empty? && link['method'].upcase != 'GET' %> \
-  -d '<%= JSON.pretty_generate(body) %>'
+<%- if !body.empty? && link['method'].upcase != 'GET' %>  -d \
+'<%= JSON.pretty_generate(body) %>'
 <%- elsif !get_params.empty? && link['method'].upcase == 'GET' %> -G \
   -d <%= get_params.join(" \\\n  -d ") %>
 <%- end %>
