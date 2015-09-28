@@ -1,5 +1,5 @@
-| Name | Type | Description | Example |
+| Name | Type | Description |
 | ------- | ------- | ------- | ------- |
 <%- extract_attributes(schema, params).each do |(key, type, description, example)| %>
-| **<%= key %>** | *<%= type %>* | <%= description %> | <%= example %> |
+| **<%= key %>** | *<%= type %>* | <%= description %> |
 <%- end %>
