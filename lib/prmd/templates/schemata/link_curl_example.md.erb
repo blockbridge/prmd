@@ -23,7 +23,7 @@ $ curl <%= href %><%- unless headers.empty? %> \<%- end %>
   <%- end %>
 <%- if !body.empty? && link['method'].upcase != 'GET' %>  -d \
 '<%= JSON.pretty_generate(body) %>'
-<%- elsif !get_params.empty? && link['method'].upcase == 'GET' %> -G \
+<%- elsif !get_params.empty? && link['method'].upcase == 'GET' %>  -G \
   -d <%= get_params.join(" \\\n  -d ") %>
 <%- end %>
 ```
